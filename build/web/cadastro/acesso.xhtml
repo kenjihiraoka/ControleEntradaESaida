@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Cadastro de Acesso</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <h1>Cadastro de Acesso</h1>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h:form>
+                <div style="width: 60%;">
+                    <div class="form-group">
+                        <label>Cadasto de Identificação</label>
+
+                        <h:selectOneMenu value="${acessoBean.acesso.fkIdentificacao}"
+                                                 styleClass="form-control"
+                                                 converter="acessoConverter">
+                                    <f:selectItems value="#{identificacaoBean.listar()}"
+                                                   var="c"
+                                                   itemValue="#{c}"
+                                                   itemLabel="#{c.id}" />
+                        </h:selectOneMenu>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Data de Entrada</label>
+                        <br/>
+                        <h:inputText id = "entrada" value = "#{acessoBean.acesso.entrada}"
+                        label = "Date" >
+                            <f:convertDateTime pattern = "dd/mm/yyyy" />
+                        </h:inputText>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Data de Saida</label>
+                        <br/>
+                        <h:inputText id = "saida" value = "#{acessoBean.acesso.saida}"
+                        label = "Date" >
+                            <f:convertDateTime pattern = "dd/mm/yyyy" />
+                        </h:inputText>
+                    </div>
+
+                    <div>
+                        <a href="#" class="btn btn-primary" 
+                            jsf:action="#{acessoBean.salvar()}">Salvar</a>
+                        <a href="identificacao.xhtml" class="btn btn-default">Voltar</a>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </body>
+</html>
