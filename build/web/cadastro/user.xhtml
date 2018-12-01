@@ -23,8 +23,11 @@
                         <label>RG</label>
                         <input type="text" class="form-control" placeholder="Digite seu rg" jsf:value="#{userBean.user.rg}"/>
                     </div>
-
-                    <a href="#" class="btn btn-primary" jsf:action="#{userBean.inserir()}">Salvar</a>
+                    
+                    <div>
+                        <a href="#" class="btn btn-primary" jsf:action="#{userBean.inserir()}">Salvar</a>
+                        <a href="listar_usuarios.xhtml" class="btn btn-primary">Listar Usuarios</a>
+                    </div>
                 </div>
             </h:form>
         </div>
